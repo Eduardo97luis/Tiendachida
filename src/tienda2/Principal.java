@@ -5,7 +5,10 @@
  */
 package tienda2;
 
+import ConexionBD.Conexion;
 import static java.lang.Thread.sleep;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
@@ -20,10 +23,12 @@ public class Principal extends javax.swing.JDialog {
     /**
      * Creates new form Principal
      */
+    Conexion conexion= new Conexion();
     public Principal(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
+        usuario.setText(usu());
     }
 
     /**
@@ -45,10 +50,10 @@ public class Principal extends javax.swing.JDialog {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jButton13 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
@@ -56,7 +61,7 @@ public class Principal extends javax.swing.JDialog {
         jPanel5 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        usuario = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton12 = new javax.swing.JButton();
@@ -215,35 +220,6 @@ public class Principal extends javax.swing.JDialog {
         });
         menubar.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 160, 40));
 
-        jButton9.setBackground(new java.awt.Color(255, 51, 102));
-        jButton9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(255, 255, 255));
-        jButton9.setText("Venta");
-        jButton9.setBorderPainted(false);
-        jButton9.setContentAreaFilled(false);
-        jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton9.setFocusPainted(false);
-        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                jButton9MouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                jButton9MouseExited(evt);
-            }
-        });
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        jButton9.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                jButton9FocusGained(evt);
-            }
-        });
-        menubar.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 160, 40));
-
         jButton10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
         jButton10.setText("Proveedores");
@@ -295,7 +271,36 @@ public class Principal extends javax.swing.JDialog {
         jLabel1.setText("Menú Principal");
         menubar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
-        jPanel1.add(menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 700));
+        jButton13.setBackground(new java.awt.Color(255, 51, 102));
+        jButton13.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        jButton13.setForeground(new java.awt.Color(255, 255, 255));
+        jButton13.setText("Venta");
+        jButton13.setBorderPainted(false);
+        jButton13.setContentAreaFilled(false);
+        jButton13.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButton13.setFocusPainted(false);
+        jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton13.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton13MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton13MouseExited(evt);
+            }
+        });
+        jButton13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton13ActionPerformed(evt);
+            }
+        });
+        jButton13.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jButton13FocusGained(evt);
+            }
+        });
+        menubar.add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 160, 40));
+
+        jPanel1.add(menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, 700));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -371,10 +376,10 @@ public class Principal extends javax.swing.JDialog {
         });
         jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("Nombre de usuario");
-        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, -1));
+        usuario.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        usuario.setForeground(new java.awt.Color(102, 102, 102));
+        usuario.setText("Nombre");
+        jPanel6.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 153, 153));
@@ -395,7 +400,7 @@ public class Principal extends javax.swing.JDialog {
                 jButton12ActionPerformed(evt);
             }
         });
-        jPanel6.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 30, 120, 20));
+        jPanel6.add(jButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 30, 120, 20));
 
         jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(153, 153, 153));
@@ -423,7 +428,19 @@ public class Principal extends javax.swing.JDialog {
         Recarga p= new Recarga(new javax.swing.JFrame(),true);
         p.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    public String usu(){
+        ResultSet datos = conexion.consultas("select * from portillito.usuarioactivo");
+        String nombre="";
+        try {
+            while(datos.next()){
+                nombre=datos.getString("nombre");
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nombre;
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
@@ -497,14 +514,6 @@ public class Principal extends javax.swing.JDialog {
         p.setVisible(true);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-   this.dispose();
-        venta v= new venta(new javax.swing.JFrame(),true);
-        v.setVisible(true);        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jButton9ActionPerformed
-
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
        this.dispose();
@@ -564,22 +573,6 @@ public class Principal extends javax.swing.JDialog {
         y=evt.getY();
     }//GEN-LAST:event_jPanel6MouseMoved
 
-    private void jButton9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton9FocusGained
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_jButton9FocusGained
-
-    private void jButton9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseEntered
-        // TODO add your handling code here:
-       JButton boton=(JButton)evt.getSource();
-       moverentrar(boton);
-    }//GEN-LAST:event_jButton9MouseEntered
-
-    private void jButton9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseExited
-       JButton boton=(JButton)evt.getSource();
-       moversalir(boton);
-    }//GEN-LAST:event_jButton9MouseExited
-
     private void jButton8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseEntered
         // TODO add your handling code here:
         JButton boton=(JButton)evt.getSource();
@@ -627,6 +620,26 @@ public class Principal extends javax.swing.JDialog {
         JButton boton=(JButton)evt.getSource();
        moversalir(boton);
     }//GEN-LAST:event_jButton7MouseExited
+
+    private void jButton13MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseEntered
+        // TODO add your handling code here:
+          JButton boton=(JButton)evt.getSource();
+       moverentrar(boton);
+    }//GEN-LAST:event_jButton13MouseEntered
+
+    private void jButton13MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton13MouseExited
+        // TODO add your handling code here:
+        JButton boton=(JButton)evt.getSource();
+       moversalir(boton);
+    }//GEN-LAST:event_jButton13MouseExited
+
+    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13ActionPerformed
+
+    private void jButton13FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton13FocusGained
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton13FocusGained
    public void moverentrar(javax.swing.JButton boto){
        final JButton boton=boto;
         Thread sld= new Thread( new Runnable(){
@@ -718,6 +731,7 @@ public class Principal extends javax.swing.JDialog {
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -725,7 +739,6 @@ public class Principal extends javax.swing.JDialog {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -733,13 +746,13 @@ public class Principal extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel menubar;
+    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
     int x,y;
     boolean bandera=false;
