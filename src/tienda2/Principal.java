@@ -8,6 +8,7 @@ package tienda2;
 import static java.lang.Thread.sleep;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 
 /**
@@ -175,12 +176,21 @@ public class Principal extends javax.swing.JDialog {
         jButton7.setContentAreaFilled(false);
         jButton7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton7.setFocusPainted(false);
+        jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton7MouseExited(evt);
+            }
+        });
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton7ActionPerformed(evt);
             }
         });
-        menubar.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 120, -1));
+        menubar.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 400, 160, 40));
 
         jButton8.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton8.setForeground(new java.awt.Color(255, 255, 255));
@@ -189,12 +199,21 @@ public class Principal extends javax.swing.JDialog {
         jButton8.setContentAreaFilled(false);
         jButton8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton8.setFocusPainted(false);
+        jButton8.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton8MouseExited(evt);
+            }
+        });
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
         });
-        menubar.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 120, -1));
+        menubar.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 250, 160, 40));
 
         jButton9.setBackground(new java.awt.Color(255, 51, 102));
         jButton9.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
@@ -204,12 +223,26 @@ public class Principal extends javax.swing.JDialog {
         jButton9.setContentAreaFilled(false);
         jButton9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton9.setFocusPainted(false);
+        jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton9MouseExited(evt);
+            }
+        });
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton9ActionPerformed(evt);
             }
         });
-        menubar.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 90, -1));
+        jButton9.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jButton9FocusGained(evt);
+            }
+        });
+        menubar.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 200, 160, 40));
 
         jButton10.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton10.setForeground(new java.awt.Color(255, 255, 255));
@@ -218,12 +251,21 @@ public class Principal extends javax.swing.JDialog {
         jButton10.setContentAreaFilled(false);
         jButton10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton10.setFocusPainted(false);
+        jButton10.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton10.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton10MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton10MouseExited(evt);
+            }
+        });
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton10ActionPerformed(evt);
             }
         });
-        menubar.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 140, -1));
+        menubar.add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 300, 160, 40));
 
         jButton11.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jButton11.setForeground(new java.awt.Color(255, 255, 255));
@@ -232,19 +274,28 @@ public class Principal extends javax.swing.JDialog {
         jButton11.setContentAreaFilled(false);
         jButton11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButton11.setFocusPainted(false);
+        jButton11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jButton11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButton11MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton11MouseExited(evt);
+            }
+        });
         jButton11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton11ActionPerformed(evt);
             }
         });
-        menubar.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 100, -1));
+        menubar.add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 160, 40));
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Menú Principal");
         menubar.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, -1, -1));
 
-        jPanel1.add(menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 700));
+        jPanel1.add(menubar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 700));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -513,6 +564,112 @@ public class Principal extends javax.swing.JDialog {
         y=evt.getY();
     }//GEN-LAST:event_jPanel6MouseMoved
 
+    private void jButton9FocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jButton9FocusGained
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_jButton9FocusGained
+
+    private void jButton9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseEntered
+        // TODO add your handling code here:
+       JButton boton=(JButton)evt.getSource();
+       moverentrar(boton);
+    }//GEN-LAST:event_jButton9MouseEntered
+
+    private void jButton9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton9MouseExited
+       JButton boton=(JButton)evt.getSource();
+       moversalir(boton);
+    }//GEN-LAST:event_jButton9MouseExited
+
+    private void jButton8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseEntered
+        // TODO add your handling code here:
+        JButton boton=(JButton)evt.getSource();
+       moverentrar(boton);
+    }//GEN-LAST:event_jButton8MouseEntered
+
+    private void jButton8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseExited
+        // TODO add your handling code here:
+        JButton boton=(JButton)evt.getSource();
+       moversalir(boton);
+    }//GEN-LAST:event_jButton8MouseExited
+
+    private void jButton10MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseEntered
+        // TODO add your handling code here:
+        JButton boton=(JButton)evt.getSource();
+       moverentrar(boton);
+    }//GEN-LAST:event_jButton10MouseEntered
+
+    private void jButton10MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton10MouseExited
+        // TODO add your handling code here:
+        JButton boton=(JButton)evt.getSource();
+       moversalir(boton);
+    }//GEN-LAST:event_jButton10MouseExited
+
+    private void jButton11MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseEntered
+        // TODO add your handling code here:
+        JButton boton=(JButton)evt.getSource();
+       moverentrar(boton);
+    }//GEN-LAST:event_jButton11MouseEntered
+
+    private void jButton11MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton11MouseExited
+        // TODO add your handling code here:
+        JButton boton=(JButton)evt.getSource();
+       moversalir(boton);
+    }//GEN-LAST:event_jButton11MouseExited
+
+    private void jButton7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseEntered
+        // TODO add your handling code here:
+        JButton boton=(JButton)evt.getSource();
+       moverentrar(boton);
+    }//GEN-LAST:event_jButton7MouseEntered
+
+    private void jButton7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseExited
+        // TODO add your handling code here:
+        JButton boton=(JButton)evt.getSource();
+       moversalir(boton);
+    }//GEN-LAST:event_jButton7MouseExited
+   public void moverentrar(javax.swing.JButton boto){
+       final JButton boton=boto;
+        Thread sld= new Thread( new Runnable(){
+            
+               public void run(){
+                   int i=1;
+                  while(i<=5){
+                     boton.setLocation(boton.getX()+1,boton.getY());
+                     i+=1;
+                     try {
+                     sleep(50);
+                     } catch (InterruptedException ex) {
+                     Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                    }
+                  //boton.setLocation(55,boton.getY());
+                   }
+              });
+           sld.start();
+   }
+   public void moversalir(javax.swing.JButton boto){
+       final JButton boton=boto;
+       
+        Thread sld= new Thread( new Runnable(){
+            int x=boton.getX();
+               public void run(){
+                   int i=1;
+                  while(i<=5){
+                     boton.setLocation(boton.getX()-1,boton.getY());
+                     i+=1;
+                     try {
+                     sleep(10);
+                     } catch (InterruptedException ex) {
+                     Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                    }
+                  //boton.setLocation(50,boton.getY());
+                   }
+              });
+           sld.start();
+           
+   }
+   
     /**
      * @param args the command line arguments
     */
