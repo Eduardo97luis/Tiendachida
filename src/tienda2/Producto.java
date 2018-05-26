@@ -10,6 +10,9 @@ package tienda2;
 import java.awt.Color;
 import java.sql.ResultSet;
 import ConexionBD.Conexion;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
@@ -57,9 +60,21 @@ public class Producto extends javax.swing.JDialog {
         tabla.getColumnModel().getColumn(2).setPreferredWidth(280);
         
         llenarTabla();
-     
+     usuar.setText(usu());
     }
-
+public String usu(){
+        ResultSet datos = conexion.consultas("select * from portillito.usuarioactivo");
+        String nombre="";
+        try {
+            while(datos.next()){
+                nombre=datos.getString("nombre");
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nombre;
+    }
 
     public void llenarTabla(){
         contador=0;
@@ -130,9 +145,9 @@ public class Producto extends javax.swing.JDialog {
             mm.removeRow(i);
             i -= 1;
         }
-                                                
+                                              //"select * from portillito.producto where nombre like "+"'"+str+"%"+"'");  
                                             
-          ResultSet datos = conexion.consultas("select * from portillito.producto where nombre like "+"'"+str+"%"+"'");
+          ResultSet datos = conexion.consultas("select * from portillito.producto where nombre like "+"'"+str+"%"+"'"); 
         try {
             while (datos.next()) {
                 String id = datos.getString("codigo");
@@ -181,7 +196,7 @@ public class Producto extends javax.swing.JDialog {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
+        usuar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
@@ -336,6 +351,11 @@ public class Producto extends javax.swing.JDialog {
         buscar.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         buscar.setForeground(new java.awt.Color(204, 204, 204));
         buscar.setText("Ingrese nombre del Producto");
+        buscar.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                buscarFocusLost(evt);
+            }
+        });
         buscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 buscarMouseClicked(evt);
@@ -344,11 +364,6 @@ public class Producto extends javax.swing.JDialog {
         buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buscarActionPerformed(evt);
-            }
-        });
-        buscar.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                buscarFocusLost(evt);
             }
         });
         buscar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -486,10 +501,11 @@ public class Producto extends javax.swing.JDialog {
         });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel9.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel9.setText("Nombre de usuario");
-        jPanel3.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, -1));
+        usuar.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        usuar.setForeground(new java.awt.Color(102, 102, 102));
+        usuar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usuar.setText("Nombre");
+        jPanel3.add(usuar, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 80, -1));
 
         jLabel1.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 153, 153));
@@ -865,12 +881,12 @@ public class Producto extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
+    private javax.swing.JLabel usuar;
     // End of variables declaration//GEN-END:variables
 int x,y;
 }

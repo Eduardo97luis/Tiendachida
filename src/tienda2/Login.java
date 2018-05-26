@@ -189,12 +189,13 @@ public class Login extends javax.swing.JDialog {
         ResultSet dato1=conexion.consultas("delete  from portillito.usuarioactivo;");
         ResultSet datos = conexion.consultas("select * from portillito.usuario where nombre='"+nombre.getText()+"' and contraseña='"+contra.getText()+"'");
         boolean b=false;
+        String tipo="";
         try {
             while(datos.next()){
                 b=true;
                 String nombre=datos.getString("nombre");
                 String contra=datos.getString("contraseña");
-                String tipo=datos.getString("tipousuario");
+                tipo=datos.getString("tipousuario");
                 String cad="'"+nombre+"','"+contra+"','"+tipo+"'";
                 ResultSet dato2=conexion.consultas("insert into  portillito.usuarioactivo values("+cad+")");
             }
@@ -203,10 +204,18 @@ public class Login extends javax.swing.JDialog {
         } catch (SQLException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         if(b){
         this.dispose();
-        Principal p= new Principal(new javax.swing.JFrame(), true);
-        p.setVisible(true);}
+        if(tipo.equals("administrador")){
+           Principal p= new Principal(new javax.swing.JFrame(), true);
+           p.setVisible(true);}
+        else {
+           Principal2 p= new Principal2(new javax.swing.JFrame(), true);
+           p.setVisible(true);
+        }
+        }
+        
         else error.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 

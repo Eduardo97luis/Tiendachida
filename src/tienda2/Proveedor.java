@@ -8,6 +8,9 @@ package tienda2;
 import java.awt.Color;
 import java.sql.ResultSet;
 import ConexionBD.Conexion;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JCheckBox;
 import javax.swing.JOptionPane;
@@ -49,8 +52,21 @@ public class Proveedor extends javax.swing.JDialog {
         tabla.getColumnModel().getColumn(0).setPreferredWidth(0);
         
         llenarTabla();
+        usuario.setText(usu());
     }
-    
+    public String usu(){
+        ResultSet datos = conexion.consultas("select * from portillito.usuarioactivo");
+        String nombre="";
+        try {
+            while(datos.next()){
+                nombre=datos.getString("nombre");
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nombre;
+    }
     public void llenarTabla() {
         contador=0;
         for (int i = 0; i < tabla.getRowCount(); i++) {
@@ -162,7 +178,7 @@ public class Proveedor extends javax.swing.JDialog {
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        usuario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
@@ -422,10 +438,11 @@ public class Proveedor extends javax.swing.JDialog {
         });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("Nombre de usuario");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, -1));
+        usuario.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        usuario.setForeground(new java.awt.Color(102, 102, 102));
+        usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usuario.setText("Nombre");
+        jPanel3.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 80, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 153));
@@ -748,7 +765,6 @@ public class Proveedor extends javax.swing.JDialog {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -762,6 +778,7 @@ public class Proveedor extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabla;
+    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 int x,y;
 }

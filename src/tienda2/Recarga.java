@@ -9,12 +9,15 @@ import ConexionBD.Conexion;
 import java.awt.Color;
 import static java.lang.Character.isDigit;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 /**
  *
@@ -49,7 +52,20 @@ public class Recarga extends javax.swing.JDialog {
         
         llenarTabla();
         
-        
+        usuario.setText(usu());
+    }
+    public String usu(){
+        ResultSet datos = conexion.consultas("select * from portillito.usuarioactivo");
+        String nombre="";
+        try {
+            while(datos.next()){
+                nombre=datos.getString("nombre");
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nombre;
     }
     public void llenarTabla(){
         for (int i = 0; i < tabla.getRowCount(); i++) {
@@ -107,7 +123,7 @@ public class Recarga extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         tabla = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        usuario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
@@ -403,10 +419,11 @@ public class Recarga extends javax.swing.JDialog {
         });
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("Nombre de usuario");
-        jPanel4.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, -1));
+        usuario.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        usuario.setForeground(new java.awt.Color(102, 102, 102));
+        usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usuario.setText("Nombre");
+        jPanel4.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 80, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 153));
@@ -686,7 +703,6 @@ public void validar(){
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
@@ -708,6 +724,7 @@ public void validar(){
     private javax.swing.JButton recarga1;
     private javax.swing.JTable tabla;
     private javax.swing.JTextField telef;
+    private javax.swing.JLabel usuario;
     private javax.swing.JButton venta1;
     // End of variables declaration//GEN-END:variables
 boolean bandera=false;

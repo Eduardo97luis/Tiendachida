@@ -378,8 +378,10 @@ public class Principal extends javax.swing.JDialog {
 
         usuario.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
         usuario.setForeground(new java.awt.Color(102, 102, 102));
+        usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         usuario.setText("Nombre");
-        jPanel6.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, -1, -1));
+        usuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel6.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, 80, -1));
 
         jLabel6.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 153, 153));

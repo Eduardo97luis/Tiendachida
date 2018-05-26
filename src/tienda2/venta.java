@@ -47,8 +47,21 @@ public class venta extends javax.swing.JDialog {
         tabla.getColumnModel().getColumn(0).setMaxWidth(0);
         tabla.getColumnModel().getColumn(0).setMinWidth(0);
         tabla.getColumnModel().getColumn(0).setPreferredWidth(0);
+        usuario.setText(usu());
     }
-
+public String usu(){
+        ResultSet datos = con.consultas("select * from portillito.usuarioactivo");
+        String nombre="";
+        try {
+            while(datos.next()){
+                nombre=datos.getString("nombre");
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return nombre;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -87,7 +100,7 @@ public class venta extends javax.swing.JDialog {
         jButton9 = new javax.swing.JButton();
         marc = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
+        usuario = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
@@ -362,10 +375,11 @@ public class venta extends javax.swing.JDialog {
         });
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel11.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        jLabel11.setForeground(new java.awt.Color(102, 102, 102));
-        jLabel11.setText("Nombre de usuario");
-        jPanel3.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 10, -1, -1));
+        usuario.setFont(new java.awt.Font("Century Gothic", 1, 18)); // NOI18N
+        usuario.setForeground(new java.awt.Color(102, 102, 102));
+        usuario.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        usuario.setText("Nombre");
+        jPanel3.add(usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(940, 10, 80, -1));
 
         jLabel2.setFont(new java.awt.Font("Century Gothic", 0, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 153, 153));
@@ -440,8 +454,18 @@ public class venta extends javax.swing.JDialog {
 
     private void aceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aceptarActionPerformed
         // TODO add your handling code here:
-        Correcto c=new Correcto(new javax.swing.JFrame(),true);
-        c.setVisible(true);
+        boolean b=false;
+        Error e;
+        Correcto c;
+        if (b){
+         c=new Correcto(new javax.swing.JFrame(),true);
+         c.setVisible(true);
+        }
+        else 
+        {
+         e = new Error(new javax.swing.JFrame(),true,"Venta no realizada");
+         e.setVisible(true);
+        }
     }//GEN-LAST:event_aceptarActionPerformed
 
     private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
@@ -728,7 +752,6 @@ public class venta extends javax.swing.JDialog {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
@@ -746,6 +769,7 @@ public class venta extends javax.swing.JDialog {
     private javax.swing.JLabel prod;
     private javax.swing.JTable tabla;
     private javax.swing.JLabel tot;
+    private javax.swing.JLabel usuario;
     // End of variables declaration//GEN-END:variables
 int x,y;
 }
